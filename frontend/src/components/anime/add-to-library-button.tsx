@@ -78,6 +78,9 @@ export function AddToLibraryButton({
         onClick={() => setIsOpen(!isOpen)}
         disabled={isLoading}
         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-foreground/10 text-sm font-medium hover:bg-foreground/20 transition-colors disabled:opacity-50"
+        aria-label={isInLibrary ? `Change library status: ${currentStatusLabel}` : "Add to library"}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
       >
         {isLoading ? (
           <>
@@ -155,8 +158,9 @@ export function AddToLibraryButton({
           <div
             className="fixed inset-0 z-40"
             onClick={() => setIsOpen(false)}
+            aria-hidden="true"
           />
-          <div className="absolute top-full mt-2 left-0 z-50 w-48 rounded-lg bg-card border border-border shadow-xl overflow-hidden">
+          <div className="absolute top-full mt-2 left-0 z-50 w-48 rounded-lg bg-card border border-border shadow-xl overflow-hidden" role="menu">
             {STATUS_OPTIONS.map((option) => (
               <button
                 key={option.value}
@@ -167,6 +171,8 @@ export function AddToLibraryButton({
                     ? "bg-foreground/10 text-foreground"
                     : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
                 }`}
+                role="menuitem"
+                aria-label={`Set status to ${option.label}`}
               >
                 {option.label}
               </button>
@@ -178,6 +184,8 @@ export function AddToLibraryButton({
                   onClick={handleRemove}
                   disabled={isLoading}
                   className="w-full text-left px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 transition-colors"
+                  role="menuitem"
+                  aria-label="Remove from library"
                 >
                   Remove from Library
                 </button>

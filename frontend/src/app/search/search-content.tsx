@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQueryState, parseAsString, parseAsArrayOf } from "nuqs";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,6 +49,15 @@ export function SearchContent() {
 
   const debouncedQuery = useDebounce(query, 200);
   const { search, isReady, isBuilding } = useSearchIndex();
+
+  // Update document title based on search query
+  useEffect(() => {
+    if (debouncedQuery) {
+      document.title = `Search: ${debouncedQuery} | Anirohi`;
+    } else {
+      document.title = "Search Anime | Anirohi";
+    }
+  }, [debouncedQuery]);
 
   // Use index search if ready, otherwise fall back to API
   const indexResults =
@@ -148,6 +157,7 @@ export function SearchContent() {
             <button
               onClick={() => setQuery("")}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear search"
             >
               <X className="size-5" />
             </button>
@@ -159,6 +169,8 @@ export function SearchContent() {
           <button
             onClick={() => setShowFilters(!showFilters)}
             className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-card/80 transition-colors"
+            aria-label={showFilters ? "Hide filters" : "Show filters"}
+            aria-expanded={showFilters}
           >
             <Filter className="size-4" />
             <span className="text-sm font-medium">
@@ -169,6 +181,7 @@ export function SearchContent() {
             <button
               onClick={clearFilters}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear all filters"
             >
               Clear all
             </button>
@@ -191,6 +204,9 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
+                    aria-pressed={type === t}
+                    role="radio"
+                    aria-checked={type === t}
                   >
                     {t.toUpperCase()}
                   </button>
@@ -213,6 +229,9 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
+                    aria-pressed={genres.includes(g)}
+                    role="checkbox"
+                    aria-checked={genres.includes(g)}
                   >
                     {g}
                   </button>
@@ -250,6 +269,9 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
+                    aria-pressed={season === s}
+                    role="radio"
+                    aria-checked={season === s}
                   >
                     {s}
                   </button>
