@@ -204,7 +204,6 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
-                    aria-pressed={type === t}
                     role="radio"
                     aria-checked={type === t}
                   >
@@ -229,7 +228,6 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
-                    aria-pressed={genres.includes(g)}
                     role="checkbox"
                     aria-checked={genres.includes(g)}
                   >
@@ -269,7 +267,6 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
-                    aria-pressed={season === s}
                     role="radio"
                     aria-checked={season === s}
                   >
