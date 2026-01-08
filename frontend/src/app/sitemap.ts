@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/lib/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const baseUrl = SITE_CONFIG.baseUrl;
 
   // Static routes with their priorities and change frequencies
   const staticRoutes = [

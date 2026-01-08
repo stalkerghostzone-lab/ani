@@ -4,6 +4,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { QueryProvider } from "@/lib/query/provider";
 import { AuthProvider } from "@/lib/auth/auth-context";
 import { Toaster } from "@/components/ui/sonner";
+import { SITE_CONFIG } from "@/lib/config/site";
 import "./globals.css";
 
 // Using system fonts as fallback to avoid network dependency
@@ -18,28 +19,25 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
-  title: "Anirohi - Stream Anime Free",
-  description:
-    "Watch your favorite anime series and movies in HD quality. Stream the latest episodes and discover new shows.",
+  metadataBase: new URL(SITE_CONFIG.baseUrl),
+  title: `${SITE_CONFIG.name} - Stream Anime Free`,
+  description: SITE_CONFIG.description,
   keywords: ["anime", "streaming", "watch anime", "anime online", "free anime"],
-  applicationName: "Anirohi",
+  applicationName: SITE_CONFIG.name,
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Anirohi",
+    title: SITE_CONFIG.name,
   },
   openGraph: {
-    title: "Anirohi - Stream Anime Free",
-    description:
-      "Watch your favorite anime series and movies in HD quality. Stream the latest episodes and discover new shows.",
+    title: `${SITE_CONFIG.name} - Stream Anime Free`,
+    description: SITE_CONFIG.description,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anirohi - Stream Anime Free",
-    description:
-      "Watch your favorite anime series and movies in HD quality. Stream the latest episodes and discover new shows.",
+    title: `${SITE_CONFIG.name} - Stream Anime Free`,
+    description: SITE_CONFIG.description,
   },
 };
 

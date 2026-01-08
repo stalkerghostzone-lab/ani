@@ -78,7 +78,7 @@ export default function AnimeDetailContent({ params }: PageProps) {
             className="object-cover blur-sm scale-105"
             priority
           />
-          <div className="absolute inset-0 bg-linear-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
 
         {/* Info */}

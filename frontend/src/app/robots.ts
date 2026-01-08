@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/lib/config/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/rpc/"],
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/sitemap.xml`,
+    sitemap: `${SITE_CONFIG.baseUrl}/sitemap.xml`,
   };
 }
