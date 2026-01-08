@@ -150,6 +150,7 @@ export function CommandMenu() {
                     <button
                       onClick={clearRecentSearches}
                       className="text-xs text-muted-foreground hover:text-foreground"
+                      aria-label="Clear recent searches"
                     >
                       Clear
                     </button>

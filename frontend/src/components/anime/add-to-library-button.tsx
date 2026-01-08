@@ -78,6 +78,9 @@ export function AddToLibraryButton({
         onClick={() => setIsOpen(!isOpen)}
         disabled={isLoading}
         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-foreground/10 text-sm font-medium hover:bg-foreground/20 transition-colors disabled:opacity-50"
+        aria-label={`Library status: ${currentStatusLabel}`}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
       >
         {isLoading ? (
           <>
@@ -162,6 +165,7 @@ export function AddToLibraryButton({
                 key={option.value}
                 onClick={() => handleStatusChange(option.value)}
                 disabled={isLoading}
+                aria-label={`Set status to ${option.label}`}
                 className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${
                   status === option.value
                     ? "bg-foreground/10 text-foreground"
@@ -177,6 +181,7 @@ export function AddToLibraryButton({
                 <button
                   onClick={handleRemove}
                   disabled={isLoading}
+                  aria-label="Remove from library"
                   className="w-full text-left px-4 py-2.5 text-sm text-red-500 hover:bg-red-500/10 transition-colors"
                 >
                   Remove from Library

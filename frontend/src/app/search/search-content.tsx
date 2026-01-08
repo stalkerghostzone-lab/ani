@@ -148,6 +148,7 @@ export function SearchContent() {
             <button
               onClick={() => setQuery("")}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear search"
             >
               <X className="size-5" />
             </button>
@@ -159,6 +160,8 @@ export function SearchContent() {
           <button
             onClick={() => setShowFilters(!showFilters)}
             className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card hover:bg-card/80 transition-colors"
+            aria-label={showFilters ? "Hide filters" : "Show filters"}
+            aria-expanded={showFilters}
           >
             <Filter className="size-4" />
             <span className="text-sm font-medium">
@@ -169,6 +172,7 @@ export function SearchContent() {
             <button
               onClick={clearFilters}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Clear all filters"
             >
               Clear all
             </button>
@@ -191,6 +195,8 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
+                    aria-label={`Filter by type: ${t.toUpperCase()}`}
+                    aria-pressed={type === t}
                   >
                     {t.toUpperCase()}
                   </button>
@@ -213,6 +219,8 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
+                    aria-label={`Filter by genre: ${g}`}
+                    aria-pressed={genres.includes(g)}
                   >
                     {g}
                   </button>
@@ -250,6 +258,8 @@ export function SearchContent() {
                         ? "bg-cyan text-background"
                         : "bg-foreground/5 text-muted-foreground hover:text-foreground hover:bg-foreground/10"
                     }`}
+                    aria-label={`Filter by season: ${s}`}
+                    aria-pressed={season === s}
                   >
                     {s}
                   </button>
